@@ -1,5 +1,5 @@
 export const createTable = `
-  CREATE TABLE insights (
+  CREATE TABLE IF NOT EXISTS insights (
     id INTEGER PRIMARY KEY ASC NOT NULL,
     brand INTEGER NOT NULL,
     createdAt TEXT NOT NULL,
@@ -22,3 +22,6 @@ export type Insert = {
 
 export const insertStatement = (item: Insert) =>
   `INSERT INTO insights (brand, createdAt, text) VALUES (${item.brand}, '${item.createdAt}', '${item.text}')`;
+
+export const deleteStatement = (id: number) =>
+  `DELETE FROM insights WHERE id = ${id}`;
